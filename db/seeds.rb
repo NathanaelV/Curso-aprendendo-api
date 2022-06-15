@@ -1,5 +1,5 @@
 Hero.delete_all 
 
 5.times do |i|
-  Hero.create name: "Hero #{Faker::Superhero.name}"
+  Hero.create name: Faker::Superhero.name
 end
