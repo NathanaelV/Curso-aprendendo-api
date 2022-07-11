@@ -18,7 +18,7 @@ class Api::HeroesController < ApplicationController
 
   # POST /heroes
   def create
-    @hero = Hero.new(hero_params.to_h.merge!({token: @token}))
+    @hero = Hero.new(hero_params.to_h.merge!({ token: @token }))
 
     if @hero.save
       render json: @hero, status: :created, location: api_hero_path(@hero)
@@ -42,13 +42,14 @@ class Api::HeroesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_hero
-      @hero = Hero.by_token(@token).find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def hero_params
-      params.require(:hero).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_hero
+    @hero = Hero.by_token(@token).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def hero_params
+    params.require(:hero).permit(:name)
+  end
 end
